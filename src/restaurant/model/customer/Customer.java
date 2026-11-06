@@ -7,12 +7,16 @@ public abstract class Customer {
     private int satisfaction;
     private CustomerState state;
     private MenuItem selectedItem;
+    private int turnServed = -1;
 
     public Customer(int id) {
         this.id = id;
         this.satisfaction = 100;
         this.state = CustomerState.WAITING_QUEUE;
     }
+
+    public int getTurnServed() { return turnServed; }
+    public void setTurnServed(int turn) { this.turnServed = turn; }
 
     public int getId() { return id; }
     public int getSatisfaction() { return satisfaction; }
