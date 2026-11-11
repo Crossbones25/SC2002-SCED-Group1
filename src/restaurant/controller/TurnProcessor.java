@@ -25,19 +25,10 @@ public class TurnProcessor {
         return new Actions(waiterAction, chefAction);
     }
 
-    private Table getTableById(RestaurantState state, int tableId) {
-        for (Table table : state.getTables()) {
-            if (table.getId() == tableId) {
-                return table;
-            }
-        }
-        return null;
-    }
-
     private void executeStaffActions(int turn, RestaurantState state, ConsoleView view, Actions actions) {
         //Waiter acts first
         StaffAction waiterAct = actions.waiterAction();
-        Table waiterTargetTable = getTableById(state, waiterAct.targetTableId());
+        Table waiterTargetTable = state.getTableById(waiterAct.targetTableId());
 
         switch (waiterAct.type()) {
             case SEAT -> {
@@ -79,7 +70,7 @@ public class TurnProcessor {
 
         //Chef acts next
         StaffAction chefAct = actions.chefAction();
-        Table chefTargetTable = getTableById(state, chefAct.targetTableId());
+        Table chefTargetTable = state.getTableById(waiterAct.targetTableId());
 
         switch (chefAct.type()) {
             case COOK -> {
@@ -125,7 +116,6 @@ public class TurnProcessor {
 
             // Clean up customer and table
             payingCustomer.setState(CustomerState.PAID);
-            state.getActiveOrders().remove(order);
             paymentTable.clear();
 
             state.getCashier().markActionUsed();
@@ -160,7 +150,6 @@ public class TurnProcessor {
                 if (c != null) {
                     c.decaySatisfaction();
                     if (c.getState() == CustomerState.ABANDONED) {
-                        state.getActiveOrders().remove(table.getCurrentOrder());
                         table.clear();
                         state.incrementDepartedCustomers();
                     }
@@ -169,16 +158,11 @@ public class TurnProcessor {
         }
     }
 
-    private void updateTurnStats(RestaurantState state) {
-
-    }
-
     public void processTurn(int turn, RestaurantState state, InputHandler input, ConsoleView view) {
         arrivalReset(state);
         Actions actions = getManagerInputs(input, state);
         executeStaffActions(turn, state, view, actions);
         eatAndPay(turn, state);
         satisfactionDecay(state);
-        updateTurnStats(state);
     }
 }
