@@ -1,0 +1,548 @@
+
+==================== TURN 1 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 1 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         1
+
+==================== TURN 2 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 2 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         2
+
+==================== TURN 3 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 3 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         3
+
+==================== TURN 4 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 76
+  Customer #2 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 4 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         4
+
+==================== TURN 5 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 68
+  Customer #2 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 5 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         5
+
+==================== TURN 6 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 60
+  Customer #2 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 6 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         6
+
+==================== TURN 7 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 52
+  Customer #2 (Regular) | satisfaction 76
+  Customer #3 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 7 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         7
+
+==================== TURN 8 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 44
+  Customer #2 (Regular) | satisfaction 68
+  Customer #3 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 8 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         8
+
+==================== TURN 9 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 36
+  Customer #2 (Regular) | satisfaction 60
+  Customer #3 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 9 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         9
+
+==================== TURN 10 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 28
+  Customer #2 (Regular) | satisfaction 52
+  Customer #3 (Regular) | satisfaction 76
+  Customer #4 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 10 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         10
+
+==================== TURN 11 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 20
+  Customer #2 (Regular) | satisfaction 44
+  Customer #3 (Regular) | satisfaction 68
+  Customer #4 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 11 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         11
+
+==================== TURN 12 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 12
+  Customer #2 (Regular) | satisfaction 36
+  Customer #3 (Regular) | satisfaction 60
+  Customer #4 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 12 ----------
+Served customers:   0
+Unhappy departures: 0
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         12
+
+==================== TURN 13 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #1 (Regular) | satisfaction 4
+  Customer #2 (Regular) | satisfaction 28
+  Customer #3 (Regular) | satisfaction 52
+  Customer #4 (Regular) | satisfaction 76
+  Customer #5 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 13 ----------
+Served customers:   0
+Unhappy departures: 1
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         13
+
+==================== TURN 14 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #2 (Regular) | satisfaction 20
+  Customer #3 (Regular) | satisfaction 44
+  Customer #4 (Regular) | satisfaction 68
+  Customer #5 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 14 ----------
+Served customers:   0
+Unhappy departures: 1
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         14
+
+==================== TURN 15 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #2 (Regular) | satisfaction 12
+  Customer #3 (Regular) | satisfaction 36
+  Customer #4 (Regular) | satisfaction 60
+  Customer #5 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 15 ----------
+Served customers:   0
+Unhappy departures: 1
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         15
+
+==================== TURN 16 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #2 (Regular) | satisfaction 4
+  Customer #3 (Regular) | satisfaction 28
+  Customer #4 (Regular) | satisfaction 52
+  Customer #5 (Regular) | satisfaction 76
+  Customer #6 (Regular) | satisfaction 100
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 16 ----------
+Served customers:   0
+Unhappy departures: 2
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         16
+
+==================== TURN 17 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #3 (Regular) | satisfaction 20
+  Customer #4 (Regular) | satisfaction 44
+  Customer #5 (Regular) | satisfaction 68
+  Customer #6 (Regular) | satisfaction 92
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 17 ----------
+Served customers:   0
+Unhappy departures: 2
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         17
+
+==================== TURN 18 ====================
+Revenue: $0.00 | Avg satisfaction (paid): N/A | Paid customers: 0
+Waiting queue:
+  Customer #3 (Regular) | satisfaction 12
+  Customer #4 (Regular) | satisfaction 36
+  Customer #5 (Regular) | satisfaction 60
+  Customer #6 (Regular) | satisfaction 84
+Tables:
+  Table 1: free
+  Table 2: free
+Staff tasks available:
+  Waiter: Seat | Wait
+  Chef:   Wait
+  Cashier: automatic (pays the oldest READY_TO_PAY customer)
+
+WAITER - choose one task:
+  1) Seat the next queued customer
+  2) Take an order at a table
+  3) Serve a READY dish
+  4) Wait
+> 
+CHEF - choose one task:
+  1) Cook one preparation unit of an order
+  2) Wait
+> ---------- End of turn 18 ----------
+Served customers:   0
+Unhappy departures: 2
+Revenue:            $0.00
+Avg satisfaction:   N/A
+Turns used:         18
+
+==================== GAME OVER ====================
+RESULT: DEFEAT
+Paid customers: 0 (need at least 4)
+Revenue:        $0.00 (need at least $45.00)
+Avg satisfaction of paid customers: N/A (need at least 60)
