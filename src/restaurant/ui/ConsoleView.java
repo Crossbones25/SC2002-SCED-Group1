@@ -5,8 +5,6 @@ import restaurant.model.Table;
 import restaurant.model.customer.Customer;
 import restaurant.model.staff.Order;
 
-import java.util.List;
-
 /** Boundary class: displays state only. It contains no game rules. */
 public class ConsoleView {
 
