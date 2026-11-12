@@ -1,7 +1,14 @@
 package restaurant.model.customer;
 
+import restaurant.model.menu.Menu;
 import restaurant.model.menu.MenuItem;
 
+/**
+ * Base class for all customers. Every type follows the same state flow,
+ * starts at 100 satisfaction, never drops below 0, and becomes ABANDONED at 0.
+ * Subclasses define how much satisfaction they lose, how they are billed,
+ * and optionally how they choose their food.
+ */
 public abstract class Customer {
     private final int id;
     private int satisfaction;
@@ -26,7 +33,21 @@ public abstract class Customer {
     public void setState(CustomerState state) { this.state = state; }
     public void setSelectedItem(MenuItem item) { this.selectedItem = item; }
 
+    /**
+     * Chooses this customer's dish. By default, customers follow the menu's
+     * deterministic rule based on their ID. Subclasses may override this.
+     */
+    public MenuItem chooseItem(Menu menu) {
+        return menu.selectItemDeterministically(id);
+    }
+
+    /** Returns the customer type shown in the console, such as "Regular". */
+    public abstract String getTypeName();
+
+    /** Applies this customer type's satisfaction loss for one unserved turn. */
     public abstract void decaySatisfaction();
+
+    /** Returns the bill in cents after this customer type's pricing rule. */
     public abstract int calculateFinalBill(int basePriceCents);
 
     protected void loseSatisfaction(int points) {
