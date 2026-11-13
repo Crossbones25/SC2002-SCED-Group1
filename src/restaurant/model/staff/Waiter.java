@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /** The Waiter completes at most one task per turn: seat, take an order, or serve a dish. */
 public class Waiter extends Staff {
-
+    private Menu menu = new Menu();
     public Waiter(String name) { super(name); }
 
     /**
@@ -46,7 +46,7 @@ public class Waiter extends Staff {
         }
         MenuItem item = c.getSelectedItem();
         if (item == null) {
-            item = customer.chooseItem(menu);
+            item = c.chooseItem(menu);
             c.setSelectedItem(item);
         }
         Order order = new Order(c, t, item);
