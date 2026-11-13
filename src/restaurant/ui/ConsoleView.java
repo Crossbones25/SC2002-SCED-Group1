@@ -99,9 +99,7 @@ public class ConsoleView {
     }
 
     private String describe(Customer c) {
-        String type = c.getClass().getSimpleName().replace("Customer", "");
-        if (type.isEmpty()) type = "Customer";
-        return "Customer #" + c.getId() + " (" + type + ")";
+        return "Customer #" + c.getId() + " (" + c.getTypeName() + ")";
     }
 
     private String averageText(RestaurantState state) {

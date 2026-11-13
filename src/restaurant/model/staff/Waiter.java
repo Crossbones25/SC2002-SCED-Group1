@@ -31,7 +31,7 @@ public class Waiter extends Staff {
 
     /**
      * Takes the order of the customer seated at the table. The customer's food choice must
-     * already be set; if not, it is chosen with the Menu's deterministic rule.
+     * already be set; if not, the customer choose via chooseItem(menu).
      * The caller can read the choice from the returned Order.
      */
     public Order takeOrder(Table t) {
@@ -46,7 +46,7 @@ public class Waiter extends Staff {
         }
         MenuItem item = c.getSelectedItem();
         if (item == null) {
-            item = new Menu().selectItemDeterministically(c.getId());
+            item = customer.chooseItem(menu);
             c.setSelectedItem(item);
         }
         Order order = new Order(c, t, item);
