@@ -1,10 +1,7 @@
 package restaurant.controller;
 
-import java.util.Arrays;
-
 import restaurant.model.RestaurantState;
-import restaurant.model.customer.RegularCustomer;
-import restaurant.model.menu.Menu;
+import restaurant.model.customer.Customer;
 import restaurant.ui.*;
 
 public class GameController {
@@ -42,7 +39,6 @@ public class GameController {
         for (int i=1; i <= MAXTURNS; i++) {
             if (arrivalSchedule.hasArrival(i)) {
                 Customer customer = arrivalSchedule.createCustomer(i, nextCustomerId);
-                customer.setSelectedItem(menu.selectItemDeterministically(nextCustomerId));
                 nextCustomerId++;
                 state.getWaitingQueue().add(customer);
             }
