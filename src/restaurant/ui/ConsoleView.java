@@ -4,6 +4,7 @@ import restaurant.model.RestaurantState;
 import restaurant.model.Table;
 import restaurant.model.customer.Customer;
 import restaurant.model.staff.Order;
+import restaurant.model.HappyHour;
 
 /** Boundary class: displays state only. It contains no game rules. */
 public class ConsoleView {
@@ -14,6 +15,7 @@ public class ConsoleView {
         System.out.println("Revenue: " + dollars(state.getTotalRevenueCents())
                 + " | Avg satisfaction (paid): " + averageText(state)
                 + " | Paid customers: " + state.getPaidCustomerCount());
+        System.out.println("Happy Hour: " + happyHourText(state));
 
         System.out.println("Waiting queue:");
         if (state.getWaitingQueue().isEmpty()) {
@@ -34,7 +36,7 @@ public class ConsoleView {
             Order o = t.getCurrentOrder();
             String orderText = (o == null)
                     ? "no order yet"
-                    : o.getItem().getName() + " [" + o.getStatus()
+                    : o.getItem().getName() + " @ " + dollars(o.getPriceCents()) + " [" + o.getStatus()
                       + (o.getRemainingPrepUnits() > 0 ? ", " + o.getRemainingPrepUnits() + " prep unit(s) left" : "")
                       + "]";
             System.out.println("  Table " + t.getId() + ": " + describe(c)
@@ -43,6 +45,7 @@ public class ConsoleView {
         }
 
         System.out.println("Staff tasks available:");
+        System.out.println("  Host:   " + hostTasks(state));
         System.out.println("  Waiter: " + waiterTasks(state));
         System.out.println("  Chef:   " + chefTasks(state));
         System.out.println("  Cashier: automatic (pays the oldest READY_TO_PAY customer)");
@@ -50,10 +53,16 @@ public class ConsoleView {
 
     /** Shown right after an order is taken, so the customer's food choice is visible. */
     public void displayOrderPlaced(Order order) {
-        System.out.println("  -> " + describe(order.getCustomer()) + " at Table " + order.getTable().getId()
-                + " ordered " + order.getItem().getName()
-                + " (" + dollars(order.getItem().getPriceCents()) + ", "
-                + order.getItem().getPrepUnits() + " prep unit(s)).");
+    System.out.println("  -> " + describe(order.getCustomer()) + " at Table " + order.getTable().getId()
+            + " ordered " + order.getItem().getName()
+            + " (locked price " + dollars(order.getPriceCents())
+            + ", menu price " + dollars(order.getItem().getPriceCents()) + ", "
+            + order.getItem().getPrepUnits() + " prep unit(s)).");
+    }
+
+    public void displayHappyHourActivated(RestaurantState state) {
+      System.out.println("  -> Happy Hour started: 20% off new orders, "
+         + state.getHappyHour().getTurnsRemaining() + " turn(s) remaining (this turn included).");
     }
 
     public void displayTurnSummary(int turn, RestaurantState state) {
@@ -107,5 +116,17 @@ public class ConsoleView {
 
     private static String dollars(int cents) {
         return String.format("$%d.%02d", cents / 100, cents % 100);
+    }
+    
+    private String happyHourText(RestaurantState state) {
+      HappyHour hh = state.getHappyHour();
+      if (hh.isActive()) {
+        return "ACTIVE - " + hh.getTurnsRemaining() + " turn(s) remaining, 20% off new orders";
+      }
+      return hh.canActivate() ? "available (not used yet)" : "used";
+    }
+    
+    private String hostTasks(RestaurantState state) {
+      return state.canSeatNextCustomer() ? "Seat | Wait" : "Wait";
     }
 }

@@ -2,6 +2,7 @@ package restaurant.model.staff;
 
 import restaurant.model.Table;
 import restaurant.model.customer.Customer;
+import restaurant.model.HappyHour;
 import restaurant.model.customer.CustomerState;
 import restaurant.model.menu.Menu;
 import restaurant.model.menu.MenuItem;
@@ -11,9 +12,15 @@ import java.util.Objects;
 /** The Waiter completes at most one task per turn: seat, take an order, or serve a dish. */
 public class Waiter extends Staff {
 
-    private Menu menu = new Menu();
-    
-    public Waiter(String name) { super(name); }
+   private final Menu menu = new Menu();
+   private final HappyHour happyHour; // may be null = no discount
+   
+   public Waiter(String name) { this(name, null); }
+   
+   public Waiter(String name, HappyHour happyHour) {
+       super(name);
+       this.happyHour = happyHour;
+}
 
     /**
      * Seats a customer at a free table. The caller (controller) removes the customer
@@ -51,7 +58,12 @@ public class Waiter extends Staff {
             item = c.chooseItem(menu);
             c.setSelectedItem(item);
         }
-        Order order = new Order(c, t, item);
+        int price = c.calculateFinalBill(item.getPriceCents());
+        if (happyHour != null && happyHour.isActive()) {
+         price = happyHour.applyDiscount(price);
+        }
+        Order order = new Order(c, t, item, price);
+        
         t.setOrder(order);
         c.setState(CustomerState.ORDERED);
         markActionUsed();

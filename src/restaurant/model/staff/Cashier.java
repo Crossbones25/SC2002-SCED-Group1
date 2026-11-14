@@ -35,7 +35,7 @@ public class Cashier extends Staff {
         Customer customer = target.getCurrentCustomer();
         Order order = target.getCurrentOrder();
 
-        int bill = customer.calculateFinalBill(order.getItem().getPriceCents());
+        int bill = order.getPriceCents();
         state.addRevenueCents(bill);
         state.recordPaidCustomer(customer.getSatisfaction());
         customer.setState(CustomerState.PAID);
