@@ -11,20 +11,30 @@ public class Order {
     private final Customer customer;
     private final Table table;
     private final MenuItem item;
+    private final int priceCents;
     private int remainingPrepUnits;
     private OrderStatus status;
 
+    public Order(Customer customer, Table table, MenuItem item, int priceCents) {
+      this.customer = Objects.requireNonNull(customer, "customer");
+      this.table = Objects.requireNonNull(table, "table");
+      this.item = Objects.requireNonNull(item, "item");
+      if (priceCents < 0) {
+         throw new IllegalArgumentException("priceCents must not be negative.");
+      }
+      this.priceCents = priceCents;
+      this.remainingPrepUnits = item.getPrepUnits();
+      this.status = OrderStatus.IN_PROGRESS;
+    }
+
     public Order(Customer customer, Table table, MenuItem item) {
-        this.customer = Objects.requireNonNull(customer, "customer");
-        this.table = Objects.requireNonNull(table, "table");
-        this.item = Objects.requireNonNull(item, "item");
-        this.remainingPrepUnits = item.getPrepUnits();
-        this.status = OrderStatus.IN_PROGRESS;
+      this(customer, table, item, customer.calculateFinalBill(item.getPriceCents()));
     }
 
     public Customer getCustomer() { return customer; }
     public Table getTable() { return table; }
     public MenuItem getItem() { return item; }
+    public int getPriceCents() { return priceCents; }
     public int getRemainingPrepUnits() { return remainingPrepUnits; }
     public OrderStatus getStatus() { return status; }
 

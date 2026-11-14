@@ -40,7 +40,51 @@ public class InputHandler {
     public InputHandler(InputStream in) {
         this.scanner = new Scanner(in);
     }
+    
+    
+    public boolean getHappyHourChoice(RestaurantState state) {
+      if (!state.getHappyHour().canActivate()) {
+         return false;
+      }
+      while (true) {
+        System.out.println();
+        System.out.println("HAPPY HOUR - 20% off orders taken while active; lasts this turn and the next;");
+        System.out.println("customers waiting for a table or food recover 15 satisfaction each active turn.");
+        System.out.println("It can only be used once per game.");
+        String line = readLine("Start Happy Hour now? (y/n) > ");
+        if (line == null) {
+            System.out.println();
+            System.out.println("[End of input - Happy Hour declined]");
+            return false;
+        }
+        String answer = line.trim().toLowerCase();
+        if (answer.equals("y") || answer.equals("yes")) return true;
+        if (answer.equals("n") || answer.equals("no")) return false;
+        view.displayErrorMessage("Invalid choice \"" + line.trim() + "\". Enter y or n.");
+      }
+    }
 
+    public StaffAction getHostChoice(RestaurantState state) {
+      while (true) {
+           System.out.println();
+           System.out.println("HOST - choose one task:");
+           System.out.println("  1) Seat the next queued customer");
+           System.out.println("  2) Wait");
+           String line = readLine("> ");
+           if (line == null) return endOfInput("Host");
+   
+           Integer option = parseInt(line);
+           if (option == null || option < 1 || option > 2) {
+               view.displayErrorMessage("Invalid choice \"" + line.trim() + "\". Enter 1 or 2.");
+               continue;
+           }
+           if (option == 2) {
+               return new StaffAction(ActionType.WAIT);
+           }
+           StaffAction seat = promptSeat(state, "Host");
+           if (seat != null) return seat;
+       }
+    }
     // Prompts manager for Waiter action (SEAT, TAKE_ORDER, SERVE, WAIT)
     // Re-prompts on invalid input without consuming the action
     public StaffAction getWaiterChoice(RestaurantState state) {
@@ -193,6 +237,36 @@ public class InputHandler {
     // ---- helpers ----
 
     private static final int NOT_A_NUMBER = Integer.MIN_VALUE;
+    
+
+    private StaffAction promptSeat(RestaurantState state, String role) {
+        if (state.getWaitingQueue().isEmpty()) {
+            view.displayErrorMessage("Cannot seat: no customers are waiting in the queue.");
+            return null;
+        }
+        List<Table> free = state.getFreeTables();
+        if (free.isEmpty()) {
+            view.displayErrorMessage("Cannot seat: every table is occupied.");
+            return null;
+        }
+        Customer next = state.getWaitingQueue().peek();
+        Integer id = askTableId("Seat Customer #" + next.getId() + " at which table? Free: " + ids(free) + " > ");
+        if (id == null) return endOfInput(role);
+        if (id == NOT_A_NUMBER) {
+            view.displayErrorMessage("Please enter a table number.");
+            return null;
+        }
+        Table t = state.getTableById(id);
+        if (t == null) {
+            view.displayErrorMessage("Table " + id + " does not exist.");
+            return null;
+        }
+        if (t.isOccupied()) {
+            view.displayErrorMessage("Table " + id + " is occupied. Free tables: " + ids(free) + ".");
+            return null;
+        }
+        return new StaffAction(ActionType.SEAT, id);
+    }
 
     /** Returns null on end of input, NOT_A_NUMBER on non-numeric text, else the table id. */
     private Integer askTableId(String prompt) {
