@@ -1,9 +1,8 @@
 # AI Chat History — Stage 1
 
-- **Member:** Madu (Coder 2, Customer and Menu Domain)
+- **Member:** Madumitha (Coder 2, Customer and Menu Domain)
 - **AI tool:** Claude (Anthropic), claude.ai
 - **Scope:** Stage 1 part of one continuous conversation. Stage 2 continues in `ai-history/stage-2/chat-01.md`, Stage 3 in `ai-history/stage-3/chat-01.md`.
-- **Note:** Prompts and replies are reproduced in full and in order. Attachments are noted in square brackets. Background tool activity (the AI opening the attached files) is not shown.
 
 ---
 
