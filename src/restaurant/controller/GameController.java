@@ -1,15 +1,11 @@
 package restaurant.controller;
 
-import java.util.Arrays;
-
 import restaurant.model.RestaurantState;
+import restaurant.model.customer.Customer;
 import restaurant.ui.*;
-import restaurant.model.customer.RegularCustomer;
-import restaurant.model.menu.Menu;
 
 public class GameController {
     private static final int MAXTURNS = 18;
-    private static final int[] ARRIVALS = {1, 4, 7, 10, 13, 16};
     private static final int MIN_PAID_CUSTOMERS = 4;
     private static final int MIN_REVENUE_CENTS = 4500;
     private static final double MIN_AVG_SATISFACTION = 60.0;
@@ -18,7 +14,7 @@ public class GameController {
     private TurnProcessor turnProcessor;
     private ConsoleView view;
     private InputHandler input;
-    private Menu menu;
+    private ArrivalSchedule arrivalSchedule;
 
     private int nextCustomerId = 1;
 
@@ -27,12 +23,8 @@ public class GameController {
         turnProcessor = new TurnProcessor();
         view = new ConsoleView();
         input = new InputHandler();
-        menu = new Menu();
+        arrivalSchedule = new ArrivalSchedule();
         nextCustomerId = 1;
-    }
-
-    private boolean isArrivalTurn(int turn) {
-        return Arrays.stream(ARRIVALS).anyMatch(x -> x == turn);
     }
 
     private void evaluateGameResult() {
@@ -45,9 +37,8 @@ public class GameController {
 
     public void startGame() {
         for (int i=1; i <= MAXTURNS; i++) {
-            if (isArrivalTurn(i)) {
-                RegularCustomer customer = new RegularCustomer(nextCustomerId);
-                customer.setSelectedItem(menu.selectItemDeterministically(nextCustomerId));
+            if (arrivalSchedule.hasArrival(i)) {
+                Customer customer = arrivalSchedule.createCustomer(i, nextCustomerId);
                 nextCustomerId++;
                 state.getWaitingQueue().add(customer);
             }

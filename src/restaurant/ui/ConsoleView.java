@@ -5,8 +5,6 @@ import restaurant.model.Table;
 import restaurant.model.customer.Customer;
 import restaurant.model.staff.Order;
 
-import java.util.List;
-
 /** Boundary class: displays state only. It contains no game rules. */
 public class ConsoleView {
 
@@ -99,9 +97,7 @@ public class ConsoleView {
     }
 
     private String describe(Customer c) {
-        String type = c.getClass().getSimpleName().replace("Customer", "");
-        if (type.isEmpty()) type = "Customer";
-        return "Customer #" + c.getId() + " (" + type + ")";
+        return "Customer #" + c.getId() + " (" + c.getTypeName() + ")";
     }
 
     private String averageText(RestaurantState state) {
