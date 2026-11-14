@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Waiter extends Staff {
 
     private Menu menu = new Menu();
-
+    
     public Waiter(String name) { super(name); }
 
     /**
@@ -48,7 +48,6 @@ public class Waiter extends Staff {
         }
         MenuItem item = c.getSelectedItem();
         if (item == null) {
-            item = c.chooseItem(menu);
             item = c.chooseItem(menu);
             c.setSelectedItem(item);
         }
