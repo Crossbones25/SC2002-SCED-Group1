@@ -22,7 +22,7 @@ public class TurnProcessor {
         if (!happyHour.canActivate()) {
             return;
         }
-        if (input.askHappyHour(state)) {
+        if (input.getHappyHourChoice(state)) {
             happyHour.activate();
             recoverWaitingCustomers(state);
             view.displayTurnHeader(turn, state);
@@ -63,7 +63,7 @@ public class TurnProcessor {
                 state.getWaiter().seatCustomer(state.getWaitingQueue().poll(), table);
             }
             case TAKE_ORDER ->  {
-                view.displayOrderPlaced(state.getWaiter().takeOrder(table, state.getHappyHour()));
+                view.displayOrderPlaced(state.getWaiter().takeOrder(table));
             }
             case SERVE -> {
                 state.getWaiter().serveDish(table);
@@ -133,7 +133,7 @@ public class TurnProcessor {
 
         eatAndPay(turn, state);
         satisfactionDecay(state);
-        
+
         state.getHappyHour().endTurn();
     }
 }
