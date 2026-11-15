@@ -10,12 +10,50 @@ public class TurnProcessor {
 
     public TurnProcessor() {}
 
-    public record Actions(StaffAction waiterAction, StaffAction chefAction) {}
-
     private void arrivalReset(RestaurantState state) {
+        state.getHost().resetTurn();
         state.getWaiter().resetTurn();
         state.getChef().resetTurn();
         state.getCashier().resetTurn();
+    }
+
+    private void offerHappyHour(int turn, RestaurantState state, InputHandler input, ConsoleView view) {
+        HappyHour happyHour = state.getHappyHour();
+        if (!happyHour.canActivate()) {
+            return;
+        }
+        if (input.getHappyHourChoice(state)) {
+            happyHour.activate();
+            recoverWaitingCustomers(state);
+            view.displayTurnHeader(turn, state);
+        }
+    }
+
+    private void recoverWaitingCustomers(RestaurantState state) {
+        for (Customer c : state.getWaitingQueue()) {
+            c.recoverSatisfaction(HappyHour.SATISFACTION_BONUS);
+        }
+        for (Table table : state.getTables()) {
+            Customer c = table.getCurrentCustomer();
+            if (c != null) {
+                c.recoverSatisfaction(HappyHour.SATISFACTION_BONUS);
+            }
+        }
+    }
+
+    public void applyHappyHourRecovery(RestaurantState state) {
+        if (state.getHappyHour().isActive()) {
+            recoverWaitingCustomers(state);
+        }
+    }
+
+    private void executeHostAction(RestaurantState state, StaffAction act) {
+        if (act.type() == ActionType.SEAT) {
+            Table table = state.getTableById(act.targetTableId());
+            state.getHost().seatCustomer(state.getWaitingQueue().poll(), table);
+        } else {
+            state.getHost().markActionUsed();
+        }
     }
 
     private void executeWaiterAction(int turn, RestaurantState state, ConsoleView view, StaffAction act) {
@@ -87,9 +125,15 @@ public class TurnProcessor {
 
     public void processTurn(int turn, RestaurantState state, InputHandler input, ConsoleView view) {
         arrivalReset(state);
+        offerHappyHour(turn, state, input, view);
+
+        executeHostAction(state, input.getHostChoice(state));
         executeWaiterAction(turn, state, view, input.getWaiterChoice(state));
         executeChefAction(state, input.getChefChoice(state));
+
         eatAndPay(turn, state);
         satisfactionDecay(state);
+
+        state.getHappyHour().endTurn();
     }
 }

@@ -42,6 +42,7 @@ public class GameController {
                 nextCustomerId++;
                 state.getWaitingQueue().add(customer);
             }
+            turnProcessor.applyHappyHourRecovery(state);
             view.displayTurnHeader(i, state);
             turnProcessor.processTurn(i, state, input, view);
             view.displayTurnSummary(i, state);

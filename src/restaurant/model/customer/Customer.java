@@ -10,6 +10,10 @@ import restaurant.model.menu.MenuItem;
  * and optionally how they choose their food.
  */
 public abstract class Customer {
+    private static final int MAX_SATISFACTION = 100;
+    private static final int COMBO_EVERY = 3;
+    private static final String PREFERRED_COMBO = "Salad + Pasta";
+
     private final int id;
     private int satisfaction;
     private CustomerState state;
@@ -18,7 +22,7 @@ public abstract class Customer {
 
     public Customer(int id) {
         this.id = id;
-        this.satisfaction = 100;
+        this.satisfaction = MAX_SATISFACTION;
         this.state = CustomerState.WAITING_QUEUE;
     }
 
@@ -34,11 +38,29 @@ public abstract class Customer {
     public void setSelectedItem(MenuItem item) { this.selectedItem = item; }
 
     /**
-     * Chooses this customer's dish. By default, customers follow the menu's
-     * deterministic rule based on their ID. Subclasses may override this.
+     * Chooses this customer's dish. Every third customer (ID 3, 6, ...) orders
+     * the Salad + Pasta combo. Everyone else follows the menu's deterministic
+     * rule based on their ID. Subclasses may override this.
      */
     public MenuItem chooseItem(Menu menu) {
+        if (id % COMBO_EVERY == 0) {
+            MenuItem combo = menu.getItemByName(PREFERRED_COMBO);
+            if (combo != null) {
+                return combo;
+            }
+        }
         return menu.selectItemDeterministically(id);
+    }
+
+    /**
+     * Raises satisfaction during Happy Hour, capped at 100. Only affects
+     * customers still waiting for a table or for their food.
+     */
+    public void recoverSatisfaction(int points) {
+        if (!isWaitingForService()) {
+            return;
+        }
+        satisfaction = Math.min(MAX_SATISFACTION, satisfaction + points);
     }
 
     /** Returns the customer type shown in the console, such as "Regular". */

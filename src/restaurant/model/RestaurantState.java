@@ -16,7 +16,9 @@ public class RestaurantState {
 
     private final Queue<Customer> waitingQueue = new LinkedList<>();
     private final List<Table> tables = new ArrayList<>();
-    private final Waiter waiter = new Waiter("Waiter");
+    private final HappyHour happyHour = new HappyHour();
+    private final Host host = new Host("Host");
+    private final Waiter waiter = new Waiter("Waiter", happyHour);
     private final Chef chef = new Chef("Chef");
     private final Cashier cashier = new Cashier("Cashier");
 
@@ -48,9 +50,11 @@ public class RestaurantState {
         return active;
     }
 
+    public Host getHost() { return host; }
     public Waiter getWaiter() { return waiter; }
     public Chef getChef() { return chef; }
     public Cashier getCashier() { return cashier; }
+    public HappyHour getHappyHour() { return happyHour; }
 
     public int getTotalRevenueCents() { return totalRevenueCents; }
     public void addRevenueCents(int cents) { totalRevenueCents += cents; }
@@ -82,6 +86,10 @@ public class RestaurantState {
             if (!t.isOccupied()) result.add(t);
         }
         return result;
+    }
+    
+    public boolean canSeatNextCustomer() {
+    return !waitingQueue.isEmpty() && !getFreeTables().isEmpty();
     }
 
     /** Occupied tables whose customer is seated but has not ordered yet. */
