@@ -26,6 +26,7 @@ public class TurnProcessor {
             happyHour.activate();
             recoverWaitingCustomers(state);
             view.displayTurnHeader(turn, state);
+            view.displayHappyHourActivated(state);
         }
     }
 
